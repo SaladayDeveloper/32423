@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5ea50cb8f3894680ac448eda1edae400" Name="Diagram1">
+        <EntityTypeShape EntityType="labModel.admin" Width="1.5" PointX="7.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="labModel.analyzator" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="labModel.blood" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="labModel.blood_service" Width="1.5" PointX="5.25" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="labModel.buhgalter" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="labModel.company_of_buh" Width="1.5" PointX="5.25" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="labModel.data_pacient" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="labModel.laborant" Width="1.5" PointX="6" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="labModel.service" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="labModel.service_bugh" Width="1.5" PointX="5.25" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="labModel.services_of_lab" Width="1.5" PointX="8.25" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="labModel.story_input" Width="1.5" PointX="8.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="labModel.strah_company" Width="1.5" PointX="1.5" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="labModel.sysdiagrams" Width="1.5" PointX="9.75" PointY="4.125" IsExpanded="true" />
+        <AssociationConnector Association="labModel.FK_blood_service_analyzator" ManuallyRouted="false" />
+        <AssociationConnector Association="labModel.FK_service_analyzator" ManuallyRouted="false" />
+        <AssociationConnector Association="labModel.FK_blood_data_pacient1" ManuallyRouted="false" />
+        <AssociationConnector Association="labModel.FK_blood_service_blood" ManuallyRouted="false" />
+        <AssociationConnector Association="labModel.FK_blood_service_service" ManuallyRouted="false" />
+        <AssociationConnector Association="labModel.FK_company_of_buh_buhgalter" ManuallyRouted="false" />
+        <AssociationConnector Association="labModel.FK_service_bugh_buhgalter" ManuallyRouted="false" />
+        <AssociationConnector Association="labModel.FK_data_pacient_strah_company" ManuallyRouted="false" />
+        <AssociationConnector Association="labModel.FK_services_of_lab_laborant" ManuallyRouted="false" />
+        <AssociationConnector Association="labModel.FK_service_bugh_service" ManuallyRouted="false" />
+        <AssociationConnector Association="labModel.FK_services_of_lab_service" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

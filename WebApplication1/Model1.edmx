@@ -1,0 +1,900 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="labModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="admin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="login" Type="nvarchar(max)" />
+          <Property Name="password" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="analyzator">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="blood">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pacient" Type="int" />
+          <Property Name="barcode" Type="nvarchar" MaxLength="50" />
+          <Property Name="date" Type="date" />
+          <Property Name="code_probirki" Type="int" />
+        </EntityType>
+        <EntityType Name="blood_service">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="blood" Type="int" />
+          <Property Name="service" Type="int" />
+          <Property Name="analyzator" Type="int" />
+          <Property Name="status" Type="varchar" MaxLength="50" />
+          <Property Name="finished" Type="date" />
+          <Property Name="rezult" Type="float" />
+        </EntityType>
+        <EntityType Name="buhgalter">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar(max)" />
+          <Property Name="family" Type="varchar(max)" />
+          <Property Name="patronymic" Type="varchar(max)" />
+          <Property Name="date_time_input" Type="datetime" />
+          <Property Name="login" Type="nvarchar(max)" />
+          <Property Name="password" Type="nvarchar(max)" />
+          <Property Name="bithdate" Type="date" />
+        </EntityType>
+        <EntityType Name="company_of_buh">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="buh" Type="int" />
+          <Property Name="company" Type="int" />
+        </EntityType>
+        <EntityType Name="data_pacient">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="login" Type="varchar(max)" />
+          <Property Name="password" Type="nvarchar(max)" />
+          <Property Name="name" Type="nvarchar(max)" />
+          <Property Name="family" Type="nvarchar(max)" />
+          <Property Name="patronymic" Type="nvarchar(max)" />
+          <Property Name="bithdate" Type="date" />
+          <Property Name="seriya" Type="bigint" />
+          <Property Name="nomer" Type="bigint" />
+          <Property Name="phone" Type="bigint" />
+          <Property Name="email" Type="nvarchar(max)" />
+          <Property Name="type_polus" Type="int" />
+          <Property Name="number_polus" Type="int" />
+        </EntityType>
+        <EntityType Name="laborant">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="login" Type="nvarchar(max)" />
+          <Property Name="password" Type="nvarchar(max)" />
+          <Property Name="name" Type="nvarchar(max)" />
+          <Property Name="family" Type="nvarchar(max)" />
+          <Property Name="patronymic" Type="nvarchar(max)" />
+          <Property Name="date_time_input" Type="datetime" />
+          <Property Name="type" Type="nvarchar" MaxLength="50" />
+          <Property Name="bithdate" Type="date" />
+        </EntityType>
+        <EntityType Name="service">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar(max)" />
+          <Property Name="price" Type="money" />
+          <Property Name="srok" Type="int" />
+          <Property Name="sr_otklonenie" Type="float" />
+          <Property Name="analizator" Type="int" />
+        </EntityType>
+        <EntityType Name="service_bugh">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="buhgalter" Type="int" />
+          <Property Name="service" Type="int" />
+        </EntityType>
+        <EntityType Name="services_of_lab">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="laborant" Type="int" />
+          <Property Name="service" Type="int" />
+        </EntityType>
+        <EntityType Name="story_input">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="login" Type="nvarchar(max)" />
+          <Property Name="last_input" Type="datetime" />
+          <Property Name="type_popitki" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="strah_company">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar(max)" />
+          <Property Name="INN" Type="int" />
+          <Property Name="rs" Type="int" />
+          <Property Name="BIK" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_blood_data_pacient1">
+          <End Role="data_pacient" Type="Self.data_pacient" Multiplicity="0..1" />
+          <End Role="blood" Type="Self.blood" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="data_pacient">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="blood">
+              <PropertyRef Name="pacient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_blood_service_analyzator">
+          <End Role="analyzator" Type="Self.analyzator" Multiplicity="0..1" />
+          <End Role="blood_service" Type="Self.blood_service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="analyzator">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="blood_service">
+              <PropertyRef Name="analyzator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_blood_service_blood">
+          <End Role="blood" Type="Self.blood" Multiplicity="0..1" />
+          <End Role="blood_service" Type="Self.blood_service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="blood">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="blood_service">
+              <PropertyRef Name="blood" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_blood_service_service">
+          <End Role="service" Type="Self.service" Multiplicity="0..1" />
+          <End Role="blood_service" Type="Self.blood_service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="service">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="blood_service">
+              <PropertyRef Name="service" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_company_of_buh_buhgalter">
+          <End Role="buhgalter" Type="Self.buhgalter" Multiplicity="0..1" />
+          <End Role="company_of_buh" Type="Self.company_of_buh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="buhgalter">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="company_of_buh">
+              <PropertyRef Name="buh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_data_pacient_strah_company">
+          <End Role="strah_company" Type="Self.strah_company" Multiplicity="0..1" />
+          <End Role="data_pacient" Type="Self.data_pacient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="strah_company">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="data_pacient">
+              <PropertyRef Name="type_polus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_service_analyzator">
+          <End Role="analyzator" Type="Self.analyzator" Multiplicity="0..1" />
+          <End Role="service" Type="Self.service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="analyzator">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="service">
+              <PropertyRef Name="analizator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_service_bugh_buhgalter">
+          <End Role="buhgalter" Type="Self.buhgalter" Multiplicity="0..1" />
+          <End Role="service_bugh" Type="Self.service_bugh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="buhgalter">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="service_bugh">
+              <PropertyRef Name="buhgalter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_service_bugh_service">
+          <End Role="service" Type="Self.service" Multiplicity="0..1" />
+          <End Role="service_bugh" Type="Self.service_bugh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="service">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="service_bugh">
+              <PropertyRef Name="service" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_services_of_lab_laborant">
+          <End Role="laborant" Type="Self.laborant" Multiplicity="0..1" />
+          <End Role="services_of_lab" Type="Self.services_of_lab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="laborant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="services_of_lab">
+              <PropertyRef Name="laborant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_services_of_lab_service">
+          <End Role="service" Type="Self.service" Multiplicity="0..1" />
+          <End Role="services_of_lab" Type="Self.services_of_lab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="service">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="services_of_lab">
+              <PropertyRef Name="service" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="labModelStoreContainer">
+          <EntitySet Name="admin" EntityType="Self.admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="analyzator" EntityType="Self.analyzator" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="blood" EntityType="Self.blood" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="blood_service" EntityType="Self.blood_service" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="buhgalter" EntityType="Self.buhgalter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="company_of_buh" EntityType="Self.company_of_buh" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="data_pacient" EntityType="Self.data_pacient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="laborant" EntityType="Self.laborant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="service" EntityType="Self.service" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="service_bugh" EntityType="Self.service_bugh" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="services_of_lab" EntityType="Self.services_of_lab" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="story_input" EntityType="Self.story_input" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="strah_company" EntityType="Self.strah_company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_blood_data_pacient1" Association="Self.FK_blood_data_pacient1">
+            <End Role="data_pacient" EntitySet="data_pacient" />
+            <End Role="blood" EntitySet="blood" />
+          </AssociationSet>
+          <AssociationSet Name="FK_blood_service_analyzator" Association="Self.FK_blood_service_analyzator">
+            <End Role="analyzator" EntitySet="analyzator" />
+            <End Role="blood_service" EntitySet="blood_service" />
+          </AssociationSet>
+          <AssociationSet Name="FK_blood_service_blood" Association="Self.FK_blood_service_blood">
+            <End Role="blood" EntitySet="blood" />
+            <End Role="blood_service" EntitySet="blood_service" />
+          </AssociationSet>
+          <AssociationSet Name="FK_blood_service_service" Association="Self.FK_blood_service_service">
+            <End Role="service" EntitySet="service" />
+            <End Role="blood_service" EntitySet="blood_service" />
+          </AssociationSet>
+          <AssociationSet Name="FK_company_of_buh_buhgalter" Association="Self.FK_company_of_buh_buhgalter">
+            <End Role="buhgalter" EntitySet="buhgalter" />
+            <End Role="company_of_buh" EntitySet="company_of_buh" />
+          </AssociationSet>
+          <AssociationSet Name="FK_data_pacient_strah_company" Association="Self.FK_data_pacient_strah_company">
+            <End Role="strah_company" EntitySet="strah_company" />
+            <End Role="data_pacient" EntitySet="data_pacient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_service_analyzator" Association="Self.FK_service_analyzator">
+            <End Role="analyzator" EntitySet="analyzator" />
+            <End Role="service" EntitySet="service" />
+          </AssociationSet>
+          <AssociationSet Name="FK_service_bugh_buhgalter" Association="Self.FK_service_bugh_buhgalter">
+            <End Role="buhgalter" EntitySet="buhgalter" />
+            <End Role="service_bugh" EntitySet="service_bugh" />
+          </AssociationSet>
+          <AssociationSet Name="FK_service_bugh_service" Association="Self.FK_service_bugh_service">
+            <End Role="service" EntitySet="service" />
+            <End Role="service_bugh" EntitySet="service_bugh" />
+          </AssociationSet>
+          <AssociationSet Name="FK_services_of_lab_laborant" Association="Self.FK_services_of_lab_laborant">
+            <End Role="laborant" EntitySet="laborant" />
+            <End Role="services_of_lab" EntitySet="services_of_lab" />
+          </AssociationSet>
+          <AssociationSet Name="FK_services_of_lab_service" Association="Self.FK_services_of_lab_service">
+            <End Role="service" EntitySet="service" />
+            <End Role="services_of_lab" EntitySet="services_of_lab" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="labModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="admin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="login" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="analyzator">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="blood_service" Relationship="Self.FK_blood_service_analyzator" FromRole="analyzator" ToRole="blood_service" />
+          <NavigationProperty Name="service" Relationship="Self.FK_service_analyzator" FromRole="analyzator" ToRole="service" />
+        </EntityType>
+        <EntityType Name="blood">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pacient" Type="Int32" />
+          <Property Name="barcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+          <Property Name="code_probirki" Type="Int32" />
+          <NavigationProperty Name="data_pacient" Relationship="Self.FK_blood_data_pacient1" FromRole="blood" ToRole="data_pacient" />
+          <NavigationProperty Name="blood_service" Relationship="Self.FK_blood_service_blood" FromRole="blood" ToRole="blood_service" />
+        </EntityType>
+        <EntityType Name="blood_service">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="blood" Type="Int32" />
+          <Property Name="service" Type="Int32" />
+          <Property Name="analyzator" Type="Int32" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="finished" Type="DateTime" Precision="0" />
+          <Property Name="rezult" Type="Double" />
+          <NavigationProperty Name="analyzator1" Relationship="Self.FK_blood_service_analyzator" FromRole="blood_service" ToRole="analyzator" />
+          <NavigationProperty Name="blood1" Relationship="Self.FK_blood_service_blood" FromRole="blood_service" ToRole="blood" />
+          <NavigationProperty Name="service1" Relationship="Self.FK_blood_service_service" FromRole="blood_service" ToRole="service" />
+        </EntityType>
+        <EntityType Name="buhgalter">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="family" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="patronymic" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="date_time_input" Type="DateTime" Precision="3" />
+          <Property Name="login" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="bithdate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="company_of_buh" Relationship="Self.FK_company_of_buh_buhgalter" FromRole="buhgalter" ToRole="company_of_buh" />
+          <NavigationProperty Name="service_bugh" Relationship="Self.FK_service_bugh_buhgalter" FromRole="buhgalter" ToRole="service_bugh" />
+        </EntityType>
+        <EntityType Name="company_of_buh">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="buh" Type="Int32" />
+          <Property Name="company" Type="Int32" />
+          <NavigationProperty Name="buhgalter" Relationship="Self.FK_company_of_buh_buhgalter" FromRole="company_of_buh" ToRole="buhgalter" />
+        </EntityType>
+        <EntityType Name="data_pacient">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="login" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="family" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="patronymic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="bithdate" Type="DateTime" Precision="0" />
+          <Property Name="seriya" Type="Int64" />
+          <Property Name="nomer" Type="Int64" />
+          <Property Name="phone" Type="Int64" />
+          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="type_polus" Type="Int32" />
+          <Property Name="number_polus" Type="Int32" />
+          <NavigationProperty Name="blood" Relationship="Self.FK_blood_data_pacient1" FromRole="data_pacient" ToRole="blood" />
+          <NavigationProperty Name="strah_company" Relationship="Self.FK_data_pacient_strah_company" FromRole="data_pacient" ToRole="strah_company" />
+        </EntityType>
+        <EntityType Name="laborant">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="login" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="family" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="patronymic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="date_time_input" Type="DateTime" Precision="3" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="bithdate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="services_of_lab" Relationship="Self.FK_services_of_lab_laborant" FromRole="laborant" ToRole="services_of_lab" />
+        </EntityType>
+        <EntityType Name="service">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="srok" Type="Int32" />
+          <Property Name="sr_otklonenie" Type="Double" />
+          <Property Name="analizator" Type="Int32" />
+          <NavigationProperty Name="analyzator" Relationship="Self.FK_service_analyzator" FromRole="service" ToRole="analyzator" />
+          <NavigationProperty Name="blood_service" Relationship="Self.FK_blood_service_service" FromRole="service" ToRole="blood_service" />
+          <NavigationProperty Name="service_bugh" Relationship="Self.FK_service_bugh_service" FromRole="service" ToRole="service_bugh" />
+          <NavigationProperty Name="services_of_lab" Relationship="Self.FK_services_of_lab_service" FromRole="service" ToRole="services_of_lab" />
+        </EntityType>
+        <EntityType Name="service_bugh">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="buhgalter" Type="Int32" />
+          <Property Name="service" Type="Int32" />
+          <NavigationProperty Name="buhgalter1" Relationship="Self.FK_service_bugh_buhgalter" FromRole="service_bugh" ToRole="buhgalter" />
+          <NavigationProperty Name="service1" Relationship="Self.FK_service_bugh_service" FromRole="service_bugh" ToRole="service" />
+        </EntityType>
+        <EntityType Name="services_of_lab">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="laborant" Type="Int32" />
+          <Property Name="service" Type="Int32" />
+          <NavigationProperty Name="laborant1" Relationship="Self.FK_services_of_lab_laborant" FromRole="services_of_lab" ToRole="laborant" />
+          <NavigationProperty Name="service1" Relationship="Self.FK_services_of_lab_service" FromRole="services_of_lab" ToRole="service" />
+        </EntityType>
+        <EntityType Name="story_input">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="login" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="last_input" Type="DateTime" Precision="3" />
+          <Property Name="type_popitki" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="strah_company">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="INN" Type="Int32" />
+          <Property Name="rs" Type="Int32" />
+          <Property Name="BIK" Type="Int32" />
+          <NavigationProperty Name="data_pacient" Relationship="Self.FK_data_pacient_strah_company" FromRole="strah_company" ToRole="data_pacient" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_blood_service_analyzator">
+          <End Role="analyzator" Type="Self.analyzator" Multiplicity="0..1" />
+          <End Role="blood_service" Type="Self.blood_service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="analyzator">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="blood_service">
+              <PropertyRef Name="analyzator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_service_analyzator">
+          <End Role="analyzator" Type="Self.analyzator" Multiplicity="0..1" />
+          <End Role="service" Type="Self.service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="analyzator">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="service">
+              <PropertyRef Name="analizator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_blood_data_pacient1">
+          <End Role="data_pacient" Type="Self.data_pacient" Multiplicity="0..1" />
+          <End Role="blood" Type="Self.blood" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="data_pacient">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="blood">
+              <PropertyRef Name="pacient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_blood_service_blood">
+          <End Role="blood" Type="Self.blood" Multiplicity="0..1" />
+          <End Role="blood_service" Type="Self.blood_service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="blood">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="blood_service">
+              <PropertyRef Name="blood" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_blood_service_service">
+          <End Role="service" Type="Self.service" Multiplicity="0..1" />
+          <End Role="blood_service" Type="Self.blood_service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="service">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="blood_service">
+              <PropertyRef Name="service" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_company_of_buh_buhgalter">
+          <End Role="buhgalter" Type="Self.buhgalter" Multiplicity="0..1" />
+          <End Role="company_of_buh" Type="Self.company_of_buh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="buhgalter">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="company_of_buh">
+              <PropertyRef Name="buh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_service_bugh_buhgalter">
+          <End Role="buhgalter" Type="Self.buhgalter" Multiplicity="0..1" />
+          <End Role="service_bugh" Type="Self.service_bugh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="buhgalter">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="service_bugh">
+              <PropertyRef Name="buhgalter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_data_pacient_strah_company">
+          <End Role="strah_company" Type="Self.strah_company" Multiplicity="0..1" />
+          <End Role="data_pacient" Type="Self.data_pacient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="strah_company">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="data_pacient">
+              <PropertyRef Name="type_polus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_services_of_lab_laborant">
+          <End Role="laborant" Type="Self.laborant" Multiplicity="0..1" />
+          <End Role="services_of_lab" Type="Self.services_of_lab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="laborant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="services_of_lab">
+              <PropertyRef Name="laborant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_service_bugh_service">
+          <End Role="service" Type="Self.service" Multiplicity="0..1" />
+          <End Role="service_bugh" Type="Self.service_bugh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="service">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="service_bugh">
+              <PropertyRef Name="service" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_services_of_lab_service">
+          <End Role="service" Type="Self.service" Multiplicity="0..1" />
+          <End Role="services_of_lab" Type="Self.services_of_lab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="service">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="services_of_lab">
+              <PropertyRef Name="service" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="labEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="admin" EntityType="Self.admin" />
+          <EntitySet Name="analyzator" EntityType="Self.analyzator" />
+          <EntitySet Name="blood" EntityType="Self.blood" />
+          <EntitySet Name="blood_service" EntityType="Self.blood_service" />
+          <EntitySet Name="buhgalter" EntityType="Self.buhgalter" />
+          <EntitySet Name="company_of_buh" EntityType="Self.company_of_buh" />
+          <EntitySet Name="data_pacient" EntityType="Self.data_pacient" />
+          <EntitySet Name="laborant" EntityType="Self.laborant" />
+          <EntitySet Name="service" EntityType="Self.service" />
+          <EntitySet Name="service_bugh" EntityType="Self.service_bugh" />
+          <EntitySet Name="services_of_lab" EntityType="Self.services_of_lab" />
+          <EntitySet Name="story_input" EntityType="Self.story_input" />
+          <EntitySet Name="strah_company" EntityType="Self.strah_company" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK_blood_service_analyzator" Association="Self.FK_blood_service_analyzator">
+            <End Role="analyzator" EntitySet="analyzator" />
+            <End Role="blood_service" EntitySet="blood_service" />
+          </AssociationSet>
+          <AssociationSet Name="FK_service_analyzator" Association="Self.FK_service_analyzator">
+            <End Role="analyzator" EntitySet="analyzator" />
+            <End Role="service" EntitySet="service" />
+          </AssociationSet>
+          <AssociationSet Name="FK_blood_data_pacient1" Association="Self.FK_blood_data_pacient1">
+            <End Role="data_pacient" EntitySet="data_pacient" />
+            <End Role="blood" EntitySet="blood" />
+          </AssociationSet>
+          <AssociationSet Name="FK_blood_service_blood" Association="Self.FK_blood_service_blood">
+            <End Role="blood" EntitySet="blood" />
+            <End Role="blood_service" EntitySet="blood_service" />
+          </AssociationSet>
+          <AssociationSet Name="FK_blood_service_service" Association="Self.FK_blood_service_service">
+            <End Role="service" EntitySet="service" />
+            <End Role="blood_service" EntitySet="blood_service" />
+          </AssociationSet>
+          <AssociationSet Name="FK_company_of_buh_buhgalter" Association="Self.FK_company_of_buh_buhgalter">
+            <End Role="buhgalter" EntitySet="buhgalter" />
+            <End Role="company_of_buh" EntitySet="company_of_buh" />
+          </AssociationSet>
+          <AssociationSet Name="FK_service_bugh_buhgalter" Association="Self.FK_service_bugh_buhgalter">
+            <End Role="buhgalter" EntitySet="buhgalter" />
+            <End Role="service_bugh" EntitySet="service_bugh" />
+          </AssociationSet>
+          <AssociationSet Name="FK_data_pacient_strah_company" Association="Self.FK_data_pacient_strah_company">
+            <End Role="strah_company" EntitySet="strah_company" />
+            <End Role="data_pacient" EntitySet="data_pacient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_services_of_lab_laborant" Association="Self.FK_services_of_lab_laborant">
+            <End Role="laborant" EntitySet="laborant" />
+            <End Role="services_of_lab" EntitySet="services_of_lab" />
+          </AssociationSet>
+          <AssociationSet Name="FK_service_bugh_service" Association="Self.FK_service_bugh_service">
+            <End Role="service" EntitySet="service" />
+            <End Role="service_bugh" EntitySet="service_bugh" />
+          </AssociationSet>
+          <AssociationSet Name="FK_services_of_lab_service" Association="Self.FK_services_of_lab_service">
+            <End Role="service" EntitySet="service" />
+            <End Role="services_of_lab" EntitySet="services_of_lab" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="labModelStoreContainer" CdmEntityContainer="labEntities">
+          <EntitySetMapping Name="admin">
+            <EntityTypeMapping TypeName="labModel.admin">
+              <MappingFragment StoreEntitySet="admin">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="analyzator">
+            <EntityTypeMapping TypeName="labModel.analyzator">
+              <MappingFragment StoreEntitySet="analyzator">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="blood">
+            <EntityTypeMapping TypeName="labModel.blood">
+              <MappingFragment StoreEntitySet="blood">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="pacient" ColumnName="pacient" />
+                <ScalarProperty Name="barcode" ColumnName="barcode" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="code_probirki" ColumnName="code_probirki" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="blood_service">
+            <EntityTypeMapping TypeName="labModel.blood_service">
+              <MappingFragment StoreEntitySet="blood_service">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="blood" ColumnName="blood" />
+                <ScalarProperty Name="service" ColumnName="service" />
+                <ScalarProperty Name="analyzator" ColumnName="analyzator" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="finished" ColumnName="finished" />
+                <ScalarProperty Name="rezult" ColumnName="rezult" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="buhgalter">
+            <EntityTypeMapping TypeName="labModel.buhgalter">
+              <MappingFragment StoreEntitySet="buhgalter">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="family" ColumnName="family" />
+                <ScalarProperty Name="patronymic" ColumnName="patronymic" />
+                <ScalarProperty Name="date_time_input" ColumnName="date_time_input" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="bithdate" ColumnName="bithdate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="company_of_buh">
+            <EntityTypeMapping TypeName="labModel.company_of_buh">
+              <MappingFragment StoreEntitySet="company_of_buh">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="buh" ColumnName="buh" />
+                <ScalarProperty Name="company" ColumnName="company" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="data_pacient">
+            <EntityTypeMapping TypeName="labModel.data_pacient">
+              <MappingFragment StoreEntitySet="data_pacient">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="family" ColumnName="family" />
+                <ScalarProperty Name="patronymic" ColumnName="patronymic" />
+                <ScalarProperty Name="bithdate" ColumnName="bithdate" />
+                <ScalarProperty Name="seriya" ColumnName="seriya" />
+                <ScalarProperty Name="nomer" ColumnName="nomer" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="type_polus" ColumnName="type_polus" />
+                <ScalarProperty Name="number_polus" ColumnName="number_polus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="laborant">
+            <EntityTypeMapping TypeName="labModel.laborant">
+              <MappingFragment StoreEntitySet="laborant">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="family" ColumnName="family" />
+                <ScalarProperty Name="patronymic" ColumnName="patronymic" />
+                <ScalarProperty Name="date_time_input" ColumnName="date_time_input" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="bithdate" ColumnName="bithdate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="service">
+            <EntityTypeMapping TypeName="labModel.service">
+              <MappingFragment StoreEntitySet="service">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="srok" ColumnName="srok" />
+                <ScalarProperty Name="sr_otklonenie" ColumnName="sr_otklonenie" />
+                <ScalarProperty Name="analizator" ColumnName="analizator" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="service_bugh">
+            <EntityTypeMapping TypeName="labModel.service_bugh">
+              <MappingFragment StoreEntitySet="service_bugh">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="buhgalter" ColumnName="buhgalter" />
+                <ScalarProperty Name="service" ColumnName="service" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="services_of_lab">
+            <EntityTypeMapping TypeName="labModel.services_of_lab">
+              <MappingFragment StoreEntitySet="services_of_lab">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="laborant" ColumnName="laborant" />
+                <ScalarProperty Name="service" ColumnName="service" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="story_input">
+            <EntityTypeMapping TypeName="labModel.story_input">
+              <MappingFragment StoreEntitySet="story_input">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="last_input" ColumnName="last_input" />
+                <ScalarProperty Name="type_popitki" ColumnName="type_popitki" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="strah_company">
+            <EntityTypeMapping TypeName="labModel.strah_company">
+              <MappingFragment StoreEntitySet="strah_company">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="INN" ColumnName="INN" />
+                <ScalarProperty Name="rs" ColumnName="rs" />
+                <ScalarProperty Name="BIK" ColumnName="BIK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="labModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
